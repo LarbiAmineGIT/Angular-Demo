@@ -10,8 +10,8 @@ import { TeamGamesComponent } from './team-games/team-games.component';
 
 const routes: Routes = [
   { path: 'leagues/:name', component: LeaguesComponent },
-  { path: 'leagues/:name/:teamID', component: TeamGamesComponent}
-
+  { path: 'leagues/:name/:teamID', component: TeamGamesComponent},
+  { path: '**', redirectTo: '/leagues/england', pathMatch: 'full'}
 ]
 
 @NgModule({
