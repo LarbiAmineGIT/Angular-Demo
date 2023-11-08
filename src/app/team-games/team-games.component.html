@@ -1,0 +1,31 @@
+
+
+<button [routerLink]="['/leagues', return_value]">Back</button>
+<table>
+    <thead>
+        <tr>
+            <td>logo</td>
+            <td>Home</td>
+            <td>Score</td>
+            <td>Away</td>
+            <td>logo</td>
+        </tr>
+    </thead>
+    <ng-container *ngFor="let team of games_map | keyvalue">
+        <ng-container *ngIf="team.key == team_id">
+            <ng-container *ngFor="let fixture of team.value.response; index as i">
+                <tbody>
+                    <tr *ngIf="i<10">
+                        <td><img [src]="fixture.teams.home.logo" alt="Team Logo" *ngIf="fixture.teams.home.logo" /></td>
+                        <td>{{fixture.teams.home.name}}</td>
+                        <td>{{fixture.goals.home}} - {{fixture.goals.away}}</td>
+                        <td>{{fixture.teams.away.name}}</td>
+                        <td><img [src]="fixture.teams.away.logo" alt="Team Logo" *ngIf="fixture.teams.away.logo" /></td>
+                    </tr>
+                </tbody>
+            </ng-container>
+        </ng-container>
+        
+    </ng-container>
+</table>
+

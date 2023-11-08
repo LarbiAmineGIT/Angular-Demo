@@ -1,0 +1,30 @@
+<table>
+    <thead>
+        <tr>
+            <td> / </td>
+            <td>logo</td>
+            <td>Names</td>
+            <td>Games</td>
+            <td>W</td>
+            <td>L</td>
+            <td>D</td>
+            <td>Goal difference</td>
+            <td>Points</td>
+        </tr>
+    </thead>
+    <ng-container *ngFor="let standing of leagues_map | keyvalue">
+        <tbody *ngIf="standing.key == name">
+            <tr *ngFor="let st of standing.value.response[0].league.standings[0]" >
+                <td>{{st.rank}}</td>
+                <td><img [src]="st.team?.logo" alt="Team Logo" *ngIf="st.team?.logo" /></td>
+                <td style="cursor: pointer;" [routerLink]="[st.team?.id]">{{st.team?.name}}</td>
+                <td>{{st.all?.played}}</td>
+                <td>{{st.all?.win}}</td>
+                <td>{{st.all?.lose}}</td>
+                <td>{{st.all?.draw}}</td>
+                <td>{{st.goalsDiff}}</td>
+                <td>{{st.points}}</td>
+            </tr>
+        </tbody>
+    </ng-container>
+</table>
